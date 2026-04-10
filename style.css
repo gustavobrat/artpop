@@ -7,7 +7,11 @@
     --text-muted: #666;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body {
     background-color: var(--deep-black);
@@ -15,6 +19,7 @@ body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* --- NAVEGAÇÃO --- */
@@ -43,7 +48,7 @@ body {
     padding: 10px 22px; font-size: 0.6rem !important;
 }
 
-/* --- HERO (AJUSTADO PARA SER MAIS JUNTO) --- */
+/* --- HERO (CENTRALIZADO E COMPACTO) --- */
 .hero {
     height: 100vh; position: relative;
     display: flex; align-items: center; justify-content: center;
@@ -57,7 +62,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px; /* Diminui o espaço entre os elementos do título */
+    justify-content: center;
+    gap: 8px; /* Aproxima os textos do título */
 }
 
 .main-title {
@@ -70,60 +76,90 @@ body {
 .subtitle {
     font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem;
     letter-spacing: 6px; color: var(--accent-blue);
-    margin-top: 5px; /* Aproxima do título principal */
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .release-date {
     font-family: 'Space Grotesk', sans-serif; font-size: 0.6rem;
     letter-spacing: 4px; color: white; opacity: 0.6;
+    text-align: center;
+    text-transform: uppercase;
 }
 
-/* --- SEÇÕES (MENOS ESPAÇADAS) --- */
-.image-gallery-highlight { padding: 60px 5%; background: var(--deep-black); } /* Padding reduzido de 120px para 60px */
-
+/* --- GALERIA DE IMAGENS --- */
+.image-gallery-highlight { padding: 60px 5%; background: var(--deep-black); }
 .gallery-container { display: flex; gap: 20px; height: 75vh; }
 .big-img { flex: 2; }
 .side-imgs { flex: 1; display: flex; flex-direction: column; gap: 20px; }
 .gallery-container img { width: 100%; height: 100%; object-fit: cover; border: 1px solid #111; }
 
-.editorial-section { padding: 80px 10%; } /* Espaçamento reduzido */
-.editorial-wrapper { display: flex; align-items: center; gap: 60px; }
+/* --- CONCEITO EDITORIAL --- */
+.editorial-section { padding: 80px 10%; background: #000; }
+.editorial-wrapper { display: flex; align-items: center; gap: 80px; }
 .editorial-img { flex: 1; }
-.editorial-img img { width: 100%; box-shadow: 15px 15px 0 var(--accent-blue); }
+.editorial-img img { width: 100%; box-shadow: 20px 20px 0 var(--accent-blue); }
+.caption { font-size: 0.6rem; color: var(--text-muted); margin-top: 25px; letter-spacing: 2px; }
 
 .editorial-text { flex: 1.2; }
-.editorial-text h2 { font-family: 'Syncopate', sans-serif; font-size: 2.5rem; margin-bottom: 20px; line-height: 1; }
-.editorial-text p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+.overtitle { color: var(--accent-pink); font-size: 0.7rem; font-weight: bold; letter-spacing: 3px; }
+.editorial-text h2 { font-family: 'Syncopate', sans-serif; font-size: 2.5rem; margin: 15px 0; line-height: 1; }
+.editorial-text p { color: var(--text-muted); line-height: 1.6; font-size: 1rem; margin-bottom: 15px; }
 
-.full-break-img { width: 100%; height: 70vh; }
+/* --- IMPACTO FULL WIDTH --- */
+.full-break-img { width: 100%; height: 70vh; position: relative; overflow: hidden; }
 .full-break-img img { width: 100%; height: 100%; object-fit: cover; }
+.overlay-caption {
+    position: absolute; bottom: 30px; right: 40px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.6rem;
+    letter-spacing: 3px; color: white; background: rgba(0,0,0,0.6); padding: 10px;
+}
 
-.stream-strip { background: white; color: black; padding: 30px; text-align: center; }
-.platform-icons { margin-top: 10px; font-size: 0.7rem; letter-spacing: 4px; font-family: 'Syncopate'; }
+/* --- SEÇÃO STREAMING (CENTRALIZADA) --- */
+.stream-strip {
+    background: white; color: black; padding: 50px 20px;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center;
+}
+
+.stream-strip h3 { font-family: 'Syncopate', sans-serif; font-size: 1rem; letter-spacing: 3px; margin-bottom: 20px; }
+.platform-icons { 
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 4px; font-weight: bold;
+}
 
 /* --- TRACKLIST --- */
 .tracklist-section { padding: 80px 10%; background: var(--subtle-gray); }
+.tracklist-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 1px solid #222; padding-bottom: 15px; }
 .tracklist-header h2 { font-family: 'Syncopate', sans-serif; font-size: 2rem; }
+.total-time { font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; }
+
 .track-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 .track-item { 
-    background: var(--deep-black); padding: 20px; border: 1px solid #222;
-    font-size: 0.8rem; letter-spacing: 1px;
+    background: var(--deep-black); padding: 25px; border: 1px solid #1a1a1a;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; letter-spacing: 1px;
+    transition: 0.3s ease; cursor: pointer;
 }
+.track-item span { color: var(--text-muted); margin-right: 15px; }
 .track-item:hover { background: var(--accent-blue); color: black; }
 .track-item.active { border-left: 4px solid var(--accent-pink); }
 
-/* --- FOOTER CENTRALIZADO --- */
+/* --- FOOTER (CENTRALIZADO) --- */
 .official-footer { 
-    padding: 80px 20px; text-align: center; border-top: 1px solid #111; 
-    display: flex; flex-direction: column; align-items: center; gap: 30px;
+    padding: 100px 20px; text-align: center; border-top: 1px solid #111; 
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px;
 }
 
-.footer-logo { font-family: 'Syncopate', sans-serif; font-size: 1.2rem; letter-spacing: 8px; }
-.socials { letter-spacing: 10px; font-size: 0.7rem; opacity: 0.5; }
-.disclaimer { max-width: 600px; font-size: 0.55rem; color: #444; line-height: 1.8; text-transform: uppercase; }
+.footer-logo { font-family: 'Syncopate', sans-serif; font-size: 1.5rem; letter-spacing: 10px; }
+.footer-logo span { color: var(--accent-pink); }
+.socials { letter-spacing: 12px; font-size: 0.7rem; font-weight: 700; opacity: 0.6; }
+.disclaimer { max-width: 700px; font-size: 0.55rem; color: #444; line-height: 1.8; text-transform: uppercase; letter-spacing: 1px; }
 
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 900px) {
-    .editorial-wrapper, .gallery-container { flex-direction: column; }
+    .editorial-wrapper { flex-direction: column; text-align: center; }
+    .gallery-container { flex-direction: column; height: auto; }
     .track-grid { grid-template-columns: 1fr; }
-    .main-title { font-size: 18vw; letter-spacing: -4px; }
+    .main-title { font-size: 18vw; letter-spacing: -5px; }
+    .nav-links { display: none; }
 }
