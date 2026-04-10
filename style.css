@@ -1,117 +1,145 @@
 :root {
-    --electric-blue: #00d4ff;
-    --neon-pink: #ff00ff;
-    --deep-black: #050505;
-    --glass-bg: rgba(255, 255, 255, 0.05);
+    --blue: #0047ff;
+    --pink: #ff00ff;
+    --bg: #030303;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
 
 body {
-    background-color: var(--deep-black);
-    color: #e0e0e0;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    background-color: var(--bg);
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
 }
 
-/* Header Estilizado */
-.hero {
-    height: 70vh;
-    background: url('https://unsplash.com') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.hero-overlay {
-    position: absolute;
+/* Efeito de Ruído Analógico */
+.noise {
+    position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, transparent, var(--deep-black)), 
-                radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
+    background: url('https://giphy.com');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 9999;
 }
 
-.hero-content {
-    position: relative;
-    text-align: center;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 5rem;
-    letter-spacing: 20px;
-    text-shadow: 0 0 40px var(--electric-blue);
-}
-
-.hero-content h1 span { color: var(--neon-pink); text-shadow: 0 0 40px var(--neon-pink); }
-
-/* Conteúdo Principal */
-.container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-
-.wiki-intro { text-align: center; margin-bottom: 60px; font-size: 1.2rem; }
-.wiki-intro h2 { font-family: 'Orbitron', sans-serif; color: var(--electric-blue); margin-bottom: 15px; }
-
-/* Grid de Dados Técnicos */
-.data-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 80px;
-}
-
-.data-item {
-    background: var(--glass-bg);
-    padding: 20px;
-    border: 1px solid #222;
-    text-align: center;
-    border-radius: 8px;
-}
-
-.data-item .label { display: block; font-size: 0.8rem; text-transform: uppercase; color: var(--neon-pink); margin-bottom: 5px; }
-.data-item .value { font-weight: bold; font-size: 1.1rem; }
-
-/* Blocos de Conteúdo Explicativo */
-.content-block {
+/* Barra Lateral Estática */
+.side-nav {
+    position: fixed;
+    right: 20px;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    writing-mode: vertical-rl;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    z-index: 100;
+    color: var(--pink);
+}
+
+.side-nav .line { width: 1px; height: 100px; background: var(--pink); margin: 20px 0; }
+
+/* Header Glitch */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12vw;
+    position: relative;
+    color: white;
+    text-shadow: 5px 0 var(--blue), -5px 0 var(--pink);
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { transform: skew(2deg); }
+    20% { transform: skew(-3deg); }
+    100% { transform: skew(0deg); }
+}
+
+/* Texto em Movimento Infinito */
+.scrolling-text {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--blue);
+    padding: 10px 0;
+    transform: rotate(-2deg);
+}
+
+.scrolling-text p {
+    display: inline-block;
+    font-weight: bold;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* Seção Manifesto - Layout Assimétrico */
+.manifesto {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 100px 10%;
     align-items: center;
     gap: 50px;
-    margin-bottom: 100px;
-    flex-wrap: wrap;
 }
 
-.content-block.reverse { flex-direction: row-reverse; }
+.visual-frame { position: relative; }
+.visual-frame img { width: 100%; filter: grayscale(1); mix-blend-mode: screen; transition: 0.5s; }
+.visual-frame:hover img { filter: grayscale(0); }
 
-.text { flex: 1; min-width: 320px; }
-.text h3 { font-family: 'Orbitron', sans-serif; color: var(--electric-blue); font-size: 2rem; margin-bottom: 20px; }
-
-.image-placeholder { flex: 1; min-width: 320px; }
-.image-placeholder img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border: 1px solid #333;
+.blob {
+    position: absolute;
+    top: -20px; left: -20px; width: 150px; height: 150px;
+    background: var(--blue);
+    filter: blur(60px);
+    z-index: -1;
 }
 
-/* Seção de Singles */
-.singles-section h3 { font-family: 'Orbitron', sans-serif; text-align: center; margin-bottom: 40px; }
-.singles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.single-card {
-    padding: 30px;
-    background: linear-gradient(135deg, #111, #1a1a1a);
-    border-top: 3px solid var(--electric-blue);
-    transition: 0.3s;
+.outline-text {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 4rem;
+    -webkit-text-stroke: 1px var(--pink);
+    color: transparent;
 }
 
-.single-card:hover { border-top-color: var(--neon-pink); transform: translateY(-10px); }
-.single-card h4 { margin-bottom: 15px; color: white; }
+/* Seção Data Stream */
+.data-stream {
+    padding: 50px 10%;
+    border-top: 1px solid #333;
+    background: linear-gradient(to right, transparent, #0015ff22);
+}
 
-footer { text-align: center; padding: 80px 20px; border-top: 1px solid #222; opacity: 0.5; }
+.tech-stats { display: flex; flex-wrap: wrap; gap: 40px; font-size: 0.8rem; }
+.stat span { color: var(--blue); margin-right: 10px; }
 
-/* Mobile */
+/* Rodapé Marquee */
+.exp-footer {
+    padding: 50px 0;
+    border-top: 1px solid var(--pink);
+}
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 2rem;
+    font-family: 'Syncopate', sans-serif;
+    color: #222;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-    .hero-content h1 { font-size: 3rem; letter-spacing: 10px; }
-    .content-block { text-align: center; }
+    .manifesto { grid-template-columns: 1fr; text-align: center; }
+    .glitch { font-size: 20vw; }
 }
