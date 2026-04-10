@@ -53,10 +53,25 @@ body {
     height: 100vh; position: relative;
     display: flex; align-items: center; justify-content: center;
     text-align: center;
+    overflow: hidden; /* Garante que a imagem flutuante não saia do bloco */
 }
 
 .hero-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-.hero-video-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
+
+/* --- ANIMAÇÃO DE FLUTUAÇÃO NA CAPA --- */
+@keyframes float {
+    0% { transform: translateY(0px) scale(1.1); }
+    50% { transform: translateY(-25px) scale(1.1); }
+    100% { transform: translateY(0px) scale(1.1); }
+}
+
+.hero-video-bg img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: brightness(0.4); 
+    animation: float 6s ease-in-out infinite; /* Movimento contínuo e suave */
+}
 
 .hero-content {
     display: flex;
@@ -64,6 +79,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px; /* Aproxima os textos do título */
+    z-index: 2;
 }
 
 .main-title {
