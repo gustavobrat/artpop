@@ -2,9 +2,9 @@
     --accent-blue: #00d4ff;
     --accent-pink: #ff00ff;
     --pure-white: #ffffff;
-    --deep-black: #050505; /* Um preto levemente mais suave para profundidade */
-    --text-muted: #888;
-    --glass: rgba(255, 255, 255, 0.03);
+    --deep-black: #080808; 
+    --subtle-gray: #121212;
+    --text-muted: #666;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,128 +18,155 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- NAVEGAÇÃO --- */
+/* --- NAVEGAÇÃO MINIMALISTA --- */
 .top-nav {
-    position: fixed; top: 0; width: 100%; height: 80px;
+    position: fixed; top: 0; width: 100%; height: 90px;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 0 50px; z-index: 1000;
-    background: rgba(0, 0, 0, 0.7); 
-    backdrop-filter: blur(20px); /* Desfoque mais intenso para classe premium */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0 60px; z-index: 1000;
+    background: rgba(8, 8, 8, 0.85); 
+    backdrop-filter: blur(25px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.logo { font-family: 'Syncopate', sans-serif; font-size: 1rem; letter-spacing: 4px; font-weight: 700; }
-.logo span { color: var(--accent-pink); text-shadow: 0 0 10px rgba(255, 0, 255, 0.3); }
+.logo { 
+    font-family: 'Syncopate', sans-serif; 
+    font-size: 0.9rem; 
+    letter-spacing: 5px; 
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.logo span { color: var(--accent-pink); }
 
 .nav-links a {
-    color: white; text-decoration: none; font-size: 0.7rem;
-    margin-left: 35px; letter-spacing: 2px; font-weight: 600;
-    transition: color 0.4s ease;
+    color: var(--pure-white); text-decoration: none; 
+    font-size: 0.65rem; margin-left: 40px; 
+    letter-spacing: 3px; font-weight: 700;
+    transition: all 0.4s ease;
+    opacity: 0.7;
 }
 
-.nav-links a:hover { color: var(--accent-blue); }
+.nav-links a:hover { opacity: 1; color: var(--accent-blue); }
 
 .btn-buy {
     background: var(--pure-white); color: black !important;
-    padding: 12px 25px; border-radius: 0px; /* Estética retangular oficial */
-    transition: transform 0.2s ease, background 0.3s !important;
+    padding: 12px 28px; letter-spacing: 2px;
+    font-size: 0.6rem !important; opacity: 1 !important;
 }
 
-.btn-buy:hover { transform: scale(1.05); background: var(--accent-blue); }
-
-/* --- HERO --- */
+/* --- HERO HIGH-END --- */
 .hero {
     height: 100vh; position: relative;
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
 }
 
 .hero-video-bg img { 
     width: 100%; height: 100%; object-fit: cover; 
-    filter: brightness(0.5) contrast(1.1); 
-    transform: scale(1.05); /* Leve zoom para evitar bordas brancas */
+    filter: brightness(0.4) grayscale(20%); 
 }
 
 .main-title {
-    font-family: 'Syncopate', sans-serif; font-size: clamp(3rem, 15vw, 12rem);
-    line-height: 0.8; letter-spacing: -8px;
-    z-index: 2;
+    font-family: 'Syncopate', sans-serif; font-size: clamp(4rem, 18vw, 14rem);
+    line-height: 0.75; letter-spacing: -12px; font-weight: 900;
 }
 
-.main-title span { color: transparent; -webkit-text-stroke: 1.5px white; opacity: 0.8; }
+.main-title span { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.4); }
 
 .subtitle {
-    font-family: 'Space Grotesk', sans-serif; letter-spacing: clamp(5px, 1vw, 15px);
-    text-align: center; color: var(--accent-blue); margin-top: 20px;
-    font-weight: 300; text-transform: uppercase;
+    font-family: 'Space Grotesk', sans-serif; 
+    letter-spacing: 12px; font-size: 0.7rem;
+    color: var(--accent-blue); margin-top: 30px;
+    opacity: 0.8;
 }
 
-/* --- SEÇÕES DE IMAGEM (ESPAÇOS NOVOS) --- */
-.image-gallery-highlight { padding: 100px 5%; background: var(--deep-black); }
-.gallery-container { display: flex; gap: 20px; height: 80vh; }
-.big-img { flex: 2; overflow: hidden; }
-.side-imgs { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+/* --- ESPAÇOS DE IMAGEM (GALERIA) --- */
+.image-gallery-highlight { padding: 120px 5%; background: var(--deep-black); }
+.gallery-container { display: flex; gap: 30px; height: 85vh; }
 .gallery-container img { 
     width: 100%; height: 100%; object-fit: cover; 
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    transition: filter 0.6s ease, transform 1s ease;
+    filter: brightness(0.8);
 }
-.gallery-container div:hover img { transform: scale(1.1); }
+.gallery-container div:hover img { filter: brightness(1.1); transform: scale(1.02); }
 
-.full-break-img {
-    width: 100%; height: 70vh; position: relative; overflow: hidden;
-}
+.full-break-img { width: 100%; height: 90vh; overflow: hidden; position: relative; }
 .full-break-img img { width: 100%; height: 100%; object-fit: cover; }
-.overlay-caption {
-    position: absolute; bottom: 40px; right: 50px;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.6rem;
-    letter-spacing: 4px; color: var(--pure-white);
-    background: rgba(0,0,0,0.8); padding: 15px; border-left: 3px solid var(--accent-blue);
-}
 
-/* --- CONCEITO EDITORIAL --- */
-.editorial-section { padding: 150px 10%; background: #000; }
-.editorial-wrapper { display: flex; align-items: center; gap: 100px; }
+/* --- EDITORIAL REFINADO --- */
+.editorial-section { padding: 180px 10%; }
+.editorial-wrapper { display: flex; align-items: center; gap: 120px; }
 
 .editorial-img img { 
-    width: 100%; box-shadow: 30px 30px 0 var(--accent-blue); 
-    transition: 0.5s ease;
+    width: 100%; 
+    filter: contrast(1.1);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.5);
 }
-.editorial-img:hover img { transform: translate(-10px, -10px); box-shadow: 40px 40px 0 var(--accent-pink); }
 
 .editorial-text h2 { 
-    font-family: 'Syncopate', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); 
-    margin: 25px 0; line-height: 1; 
+    font-family: 'Syncopate', sans-serif; font-size: 3.5rem; 
+    margin: 30px 0; line-height: 0.9; letter-spacing: -2px;
 }
 
-/* --- TRACKLIST --- */
-.tracklist-section { padding: 120px 10%; background: var(--deep-black); }
-.track-grid { border: none; gap: 10px; background: transparent; }
+.editorial-text p { 
+    font-size: 1rem; color: var(--text-muted); 
+    max-width: 500px; line-height: 1.8; 
+}
+
+/* --- TRACKLIST CLEAN --- */
+.tracklist-section { padding: 150px 10%; background: var(--subtle-gray); }
+.track-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; background: transparent; border: none; }
+
 .track-item {
-    background: var(--glass); padding: 30px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.4s ease;
+    background: rgba(255,255,255,0.02); 
+    padding: 40px; border: 1px solid rgba(255,255,255,0.03);
+    display: flex; justify-content: space-between; align-items: center;
 }
 
-.track-item:hover { 
-    background: var(--pure-white); color: black; 
-    transform: translateY(-5px);
+.track-item:hover { background: var(--pure-white); color: var(--deep-black); }
+
+/* --- FOOTER CENTRALIZADO & REFINADO --- */
+.official-footer { 
+    padding: 120px 20px; 
+    background: var(--deep-black); 
+    text-align: center; /* Centralização principal */
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-.track-item.active { border: none; background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue)); color: white; }
-
-/* --- FOOTER --- */
-.official-footer { border-top: 1px solid #111; background: #000; }
-.disclaimer { 
-    max-width: 800px; opacity: 0.4; 
-    transition: opacity 0.3s; 
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza itens flex */
+    gap: 40px;
 }
-.disclaimer:hover { opacity: 0.8; }
 
-/* --- MOBILE --- */
-@media (max-width: 900px) {
-    .editorial-wrapper { flex-direction: column; gap: 50px; }
+.footer-logo { 
+    font-family: 'Syncopate', sans-serif; 
+    font-size: 1.5rem; 
+    letter-spacing: 10px;
+}
+
+.socials { 
+    letter-spacing: 15px; 
+    font-size: 0.7rem; 
+    font-weight: 700; 
+    opacity: 0.5;
+    margin-left: 15px; /* Compensa o último espaçamento */
+}
+
+.disclaimer {
+    max-width: 700px;
+    margin: 40px auto 0;
+    font-size: 0.6rem;
+    color: #444;
+    line-height: 2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+    .editorial-wrapper { flex-direction: column; gap: 60px; text-align: center; }
+    .editorial-text p { margin: 0 auto; }
+    .track-grid { grid-template-columns: 1fr; }
     .gallery-container { flex-direction: column; height: auto; }
-    .side-imgs { height: 60vh; }
-    .top-nav { padding: 0 20px; }
-    .nav-links { display: none; }
+    .top-nav { padding: 0 30px; }
 }
