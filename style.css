@@ -1,145 +1,104 @@
 :root {
-    --blue: #0047ff;
-    --pink: #ff00ff;
-    --bg: #030303;
+    --electric: #00d4ff;
+    --magenta: #ff00ff;
+    --dark: #000;
+    --gray: #1a1a1a;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg);
-    color: #fff;
-    font-family: 'Space Mono', monospace;
-    overflow-x: hidden;
+    background-color: var(--dark);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.8;
 }
 
-/* Efeito de Ruído Analógico */
 .noise {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    position: fixed; top: 0; width: 100%; height: 100%;
     background: url('https://giphy.com');
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: 9999;
+    opacity: 0.04; z-index: 999; pointer-events: none;
 }
 
-/* Barra Lateral Estática */
-.side-nav {
-    position: fixed;
-    right: 20px;
+/* Header Estendido */
+.vignette-header {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    writing-mode: vertical-rl;
-    font-size: 0.7rem;
-    letter-spacing: 5px;
-    z-index: 100;
-    color: var(--pink);
-}
-
-.side-nav .line { width: 1px; height: 100px; background: var(--pink); margin: 20px 0; }
-
-/* Header Glitch */
-header {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background: radial-gradient(circle, #1a1a2e 0%, #000 80%);
 }
 
 .glitch {
     font-family: 'Orbitron', sans-serif;
-    font-size: 12vw;
-    position: relative;
-    color: white;
-    text-shadow: 5px 0 var(--blue), -5px 0 var(--pink);
-    animation: glitch-anim 2s infinite linear alternate-reverse;
+    font-size: 15vw;
+    letter-spacing: -5px;
+    text-shadow: 4px 0 var(--electric), -4px 0 var(--magenta);
 }
 
-@keyframes glitch-anim {
-    0% { transform: skew(2deg); }
-    20% { transform: skew(-3deg); }
-    100% { transform: skew(0deg); }
+/* Seção Long Read */
+.long-read {
+    display: flex;
+    padding: 100px 5%;
+    gap: 50px;
+    border-top: 1px solid var(--gray);
 }
 
-/* Texto em Movimento Infinito */
-.scrolling-text {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    background: var(--blue);
-    padding: 10px 0;
-    transform: rotate(-2deg);
+.sticky-title { position: sticky; top: 50px; height: fit-content; }
+.vertical-text {
+    writing-mode: vertical-rl;
+    font-family: 'Syncopate', sans-serif;
+    font-size: 5rem;
+    color: var(--gray);
+    text-transform: uppercase;
 }
 
-.scrolling-text p {
-    display: inline-block;
-    font-weight: bold;
-    animation: scroll 20s linear infinite;
-}
+.content-text { max-width: 700px; font-size: 1.2rem; font-weight: 300; }
+.dropcap { font-size: 4rem; font-weight: 800; float: left; margin-right: 15px; color: var(--magenta); }
 
-@keyframes scroll {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
-}
+/* Espaços para Imagens */
+.image-spotlight { margin: 60px 0; border-left: 2px solid var(--electric); padding-left: 20px; }
+.image-spotlight img { width: 100%; border-radius: 5px; filter: contrast(110%); }
+.image-spotlight span { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--electric); }
 
-/* Seção Manifesto - Layout Assimétrico */
-.manifesto {
+.full-width-image { width: 100vw; margin-left: calc(-50vw + 50%); padding: 50px 0; }
+.full-width-image img { width: 100%; height: 600px; object-fit: cover; mix-blend-mode: luminosity; }
+
+/* Grade de Imagens Secundária */
+.image-grid-sequence {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 100px 10%;
-    align-items: center;
-    gap: 50px;
+    background: #050505;
 }
 
-.visual-frame { position: relative; }
-.visual-frame img { width: 100%; filter: grayscale(1); mix-blend-mode: screen; transition: 0.5s; }
-.visual-frame:hover img { filter: grayscale(0); }
+.grid-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+.text-box { padding: 80px; display: flex; flex-direction: column; justify-content: center; }
+.text-box h3 { font-family: 'Orbitron', sans-serif; color: var(--magenta); margin-bottom: 20px; }
 
-.blob {
-    position: absolute;
-    top: -20px; left: -20px; width: 150px; height: 150px;
-    background: var(--blue);
-    filter: blur(60px);
-    z-index: -1;
+/* Tracklist Estilo Manifesto */
+.track-manifesto { padding: 100px 10%; text-align: center; }
+.outline-text { font-family: 'Syncopate', sans-serif; font-size: 8vw; -webkit-text-stroke: 1px white; color: transparent; margin-bottom: 50px; }
+
+.track-list { list-style: none; display: inline-block; text-align: left; }
+.track-list li {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray);
+    display: flex; justify-content: space-between; gap: 50px;
+}
+.track-list li span { color: var(--magenta); }
+
+/* Footer Marquee */
+.marquee-slow {
+    overflow: hidden; white-space: nowrap;
+    background: white; color: black; padding: 20px 0;
+    font-family: 'Syncopate', sans-serif; font-weight: bold;
 }
 
-.outline-text {
-    font-family: 'Syncopate', sans-serif;
-    font-size: 4rem;
-    -webkit-text-stroke: 1px var(--pink);
-    color: transparent;
-}
-
-/* Seção Data Stream */
-.data-stream {
-    padding: 50px 10%;
-    border-top: 1px solid #333;
-    background: linear-gradient(to right, transparent, #0015ff22);
-}
-
-.tech-stats { display: flex; flex-wrap: wrap; gap: 40px; font-size: 0.8rem; }
-.stat span { color: var(--blue); margin-right: 10px; }
-
-/* Rodapé Marquee */
-.exp-footer {
-    padding: 50px 0;
-    border-top: 1px solid var(--pink);
-}
-
-.marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 2rem;
-    font-family: 'Syncopate', sans-serif;
-    color: #222;
-}
-
-/* Responsividade */
 @media (max-width: 768px) {
-    .manifesto { grid-template-columns: 1fr; text-align: center; }
-    .glitch { font-size: 20vw; }
+    .long-read { flex-direction: column; }
+    .vertical-text { writing-mode: horizontal-tb; font-size: 3rem; }
+    .image-grid-sequence { grid-template-columns: 1fr; }
 }
